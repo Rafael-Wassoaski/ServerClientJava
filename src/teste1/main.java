@@ -15,22 +15,9 @@ public class main {
 		// TODO Auto-generated method stub
 		
 		
-		HashMap<String,Integer> alunos =  new HashMap<String, Integer>();
-		Random rand = new Random();
-		
-		alunos.put("LUCIANO", rand.nextInt(100));
-		alunos.put("MATEUS", rand.nextInt(100));
-		alunos.put("FERNANDO", rand.nextInt(100));
-		alunos.put("KARINE", rand.nextInt(100));
-		alunos.put("LUCAS", rand.nextInt(100));
-		alunos.put("JOHN", rand.nextInt(100));
-		alunos.put("TIAGO", rand.nextInt(100));
-		alunos.put("THOMAS", rand.nextInt(100));
-		alunos.put("GIOVANI", rand.nextInt(100));
-		alunos.put("GUSTAVO", rand.nextInt(100));
-		alunos.put("RAFAEL", rand.nextInt(100));
-		alunos.put("EVELIN", rand.nextInt(100));
+		Usuarios alunos = new Usuarios();
 
+		alunos.escrecerAlunos();
 		
 		
 		 try (var listener = new ServerSocket(6666)) {

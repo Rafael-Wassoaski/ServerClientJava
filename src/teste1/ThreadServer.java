@@ -10,20 +10,20 @@ import java.util.Scanner;
 public class ThreadServer implements Runnable{
 
 	private Socket socket;
-	private HashMap<String,Integer> alunos =  new HashMap<String, Integer>();
+	Usuarios alunos;
 
-    public ThreadServer(Socket socket, HashMap<String, Integer> alunos) {
+    public ThreadServer(Socket socket, Usuarios alunos) {
         this.socket = socket;
         this.alunos = alunos;
     }
 
     @Override
     public void run() {
-        System.out.println("Connected: " + socket);
+        System.out.println("Conectado a : " + socket);
         try {
             var in = new Scanner(socket.getInputStream());
             var out = new PrintWriter(socket.getOutputStream(), true);
-            
+           
             
             
             
@@ -33,22 +33,18 @@ public class ThreadServer implements Runnable{
             
             nome = in.nextLine().toUpperCase();
             System.out.println(nome);
-            if(alunos.containsKey(nome)) {
+            
             	
-            	out.println(alunos.get(nome).toString());
-            }else {
-            	
-            	out.println("-1");
-            	
-            }
+            	out.println(alunos.getAluno(nome));
+            
             
             
                         
         } catch (Exception e) {
-            System.out.println("Error:" + socket);
+            System.out.println("Deu ERRO:" + socket);
         } finally {
             try { socket.close(); } catch (IOException e) {}
-            System.out.println("Closed: " + socket);
+            System.out.println("Fechando conexão com: " + socket);
         }
     }
 }
